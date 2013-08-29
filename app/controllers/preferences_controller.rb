@@ -2,7 +2,7 @@ class PreferencesController < ApplicationController
   def update_preference
     pref_params = params[:preference]
     preference = Preference.find("user_id: #{pref_params.slice!(:user_id)}")
-    if preference.update_attributes(pref_params)
+    if preference && preference.update_attributes(pref_params)
       respond_with 200
     else
       respond_with 500
@@ -11,12 +11,25 @@ class PreferencesController < ApplicationController
 
   def retrieve_preferences
     preferences = Preference.all.query(:remote => query_params[:remote], :us_citizen => query_params[:us_citizen], :fulltime => query_params[:fulltime])
-    preferences.select! do |preference|
-      ((preference.locations & query_params[:locations]).count >= 1) && ((preference.skills & query_params[:skills]).count >= 1)
+    if preferences.count > 0
+      preferences.select! do |preference|
+        ((preference.locations & query_params[:locations]).count >= 1) && ((preference.skills & query_params[:skills]).count >= 1)
+      end
+      @user_ids = preferences.map{ |preference| preference.user_id }
+      if @user_ids.count > 0
+        respond_with @user_ids
+      else
+        respond_with 500
+      end
+    else
+      respond_with 500
     end
-    @user_ids = preferences.map{ |preference| preference.user_id }
-    if @user_ids.count > 0
-      respond_with @user_ids
+  end
+
+  def create_preference
+    preference = Preference.create(preference_params)
+    if preference && preference.save
+      respond_with 200
     else
       respond_with 500
     end
