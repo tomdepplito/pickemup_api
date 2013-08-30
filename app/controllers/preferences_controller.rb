@@ -1,5 +1,5 @@
 class PreferencesController < ApplicationController
-  def update_preference
+  def update
     pref_params = params[:preference]
     preference = Preference.find("user_id: #{pref_params.slice!(:user_id)}")
     if preference && preference.update_attributes(pref_params)
@@ -9,7 +9,7 @@ class PreferencesController < ApplicationController
     end
   end
 
-  def retrieve_preferences
+  def retrieve
     preferences = Preference.all.query(:remote => query_params[:remote], :us_citizen => query_params[:us_citizen], :fulltime => query_params[:fulltime])
     if preferences.count > 0
       preferences.select! do |preference|
@@ -26,7 +26,7 @@ class PreferencesController < ApplicationController
     end
   end
 
-  def create_preference
+  def create
     preference = Preference.create(preference_params)
     if preference && preference.save
       respond_with 200

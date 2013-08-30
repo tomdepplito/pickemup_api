@@ -1,10 +1,10 @@
 PickemupApi::Application.routes.draw do
   #Preferences
-  post '/preferences/update_preference' => 'preferences#update_preference'
-  get '/preferences/retrieve_preferences' => 'preferences#retrieve_preferences'
-  post '/preferences/create_preference' => 'preferences#create_preference'
+  post '/preferences/update' => 'preferences#update'
+  get '/preferences/retrieve' => 'preferences#retrieve'
+  post '/preferences/create' => 'preferences#create'
   #Job Listings
-  post '/job_listings/update_listing' => 'job_listings#update_listing'
-  get '/job_listings/retrieve_listings' => 'job_listings#retrieve_listings'
-  post '/job_listings/create_listing' => 'job_listings#create_listing'
+  post '/job_listings/update' => 'job_listings#update'
+  get '/job_listings/retrieve' => 'job_listings#retrieve'
+  post '/job_listings/create' => 'job_listings#create'
 end

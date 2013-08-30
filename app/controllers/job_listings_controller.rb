@@ -1,5 +1,5 @@
 class JobListingsController < ApplicationController
-  def update_listing
+  def update
     pref_params = params[:listing]
     listing = JobListing.find("listing_id: #{listing_params.slice!(:listing_id)}")
     if listing && listing.update_attributes(listing_params)
@@ -9,7 +9,7 @@ class JobListingsController < ApplicationController
     end
   end
 
-  def retrieve_listings
+  def retrieve
     listings = JobListing.all.query(:remote => query_params[:remote], :us_citizen => query_params[:us_citizen], :fulltime => query_params[:fulltime])
     if listings.count > 0
       listings.select! do |listing|
@@ -26,7 +26,7 @@ class JobListingsController < ApplicationController
     end
   end
 
-  def create_listing
+  def create
     listing = listing.create(listing_params)
     if listing && listing.save
       respond_with 200
