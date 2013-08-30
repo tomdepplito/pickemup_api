@@ -1,4 +1,7 @@
 class JobListingsController < ApplicationController
+  http_basic_authenticate_with key: ENV['PICKEMUP_API_KEY'], secret: ENV['PICKEMUP_API_SECRET']
+  respond_to :json
+
   def update
     pref_params = params[:listing]
     listing = JobListing.find("listing_id: #{listing_params.slice!(:listing_id)}")
