@@ -42,6 +42,6 @@ class PreferencesController < ApplicationController
   end
 
   def query_params
-    params.require(:query).permit!
+    params.require(:preference).permit!
   end
 end
