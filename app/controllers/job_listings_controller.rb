@@ -27,7 +27,7 @@ class JobListingsController < ApplicationController
   end
 
   def create
-    listing = listing.create(listing_params)
+    listing = JobListing.create(listing_params)
     if listing && listing.save
       respond_with 200
     else
@@ -38,10 +38,10 @@ class JobListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit!
+    params.require(:job_listing).permit!
   end
 
   def query_params
-    params.require(:query).permit!
+    params.require(:job_listing).permit!
   end
 end
