@@ -1,9 +1,9 @@
 class Preference < Neo4j::Rails::Model
-  property :locations, type: String #Serialized Array
-  property :skills, type: String #Serialized Array
-  property :us_citizen, type: :boolean
-  property :remote, type: :boolean
-  property :fulltime, type: :boolean
+  property :locations, type: String, default: [] #Serialized Array
+  property :skills, type: String, default: [] #Serialized Array
+  property :us_citizen, type: :boolean, default: false
+  property :remote, type: :boolean, default: false
+  property :fulltime, type: :boolean, default: false
   property :user_id, type: :string, index: :exact, unique: true
 
   validates_presence_of :user_id

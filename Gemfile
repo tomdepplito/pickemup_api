@@ -12,6 +12,7 @@ gem 'jquery-rails'
 
 #WEB SERVERS
 #gem 'unicorn'
+gem "puma", "~> 2.0.0.b7"
 
 group :production do
   #HEROKU
