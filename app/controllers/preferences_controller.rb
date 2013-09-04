@@ -41,12 +41,12 @@ class PreferencesController < ApplicationController
   private
 
   def preference_params
-    params.require(:preference).permit!
+    params.require('preference').permit!
   end
 
   def initial_query_params
     search_params = {}
-    params.require(:preference).permit!.each do |key, val|
+    params.require('preference').permit!.each do |key, val|
       unless val.blank?
         search_params.merge!(key => val.to_bool) if val.class.name == "String"
       end
@@ -56,7 +56,7 @@ class PreferencesController < ApplicationController
 
   def array_query_params
     search_params = {"locations" => [], "skills" => []}
-    params.require(:preference).permit!.each do |key, val|
+    params.require('preference').permit!.each do |key, val|
       if key =~ /locations|skills/
         val.blank? ? search_params.merge!(key => []) : search_params.merge!(key => val)
       end
