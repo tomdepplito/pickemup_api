@@ -2,9 +2,8 @@ class JobListingsController < ApplicationController
   require 'string'
   respond_to :json, :html
   def update
-    pref_params = params[:listing]
-    listing = JobListing.find("listing_id: #{listing_params.slice!(:listing_id)}")
-    if listing && listing.update_attributes(listing_params)
+    listing = JobListing.find("listing_id: #{create_update_params['listing_id']}")
+    if listing && listing.update_attributes(create_update_params)
       render text: "OK", status: 200
     else
       render text: "Action Failed", status: 500
@@ -30,8 +29,17 @@ class JobListingsController < ApplicationController
   end
 
   def create
-    listing = JobListing.create(listing_params)
+    listing = JobListing.create(create_update_params)
     if listing && listing.save
+      render text: "OK", status: 200
+    else
+      render text: "Action Failed", status: 500
+    end
+  end
+
+  def destroy
+    listing = JobListing.find("listing_id: #{params['listing_id']}")
+    if listing && listing.destroy
       render text: "OK", status: 200
     else
       render text: "Action Failed", status: 500
@@ -40,8 +48,20 @@ class JobListingsController < ApplicationController
 
   private
 
-  def listing_params
-    params.require(:job_listing).permit!
+  def create_update_params
+    modified_params = {}
+    params.require(:job_listing).permit!.each do |key, val|
+      unless val.blank?
+        if val.class.name == "String"
+          modified_params.merge!(key => val.to_bool)
+        elsif key =~ /location/
+          modified_params.merge!('locations' => [val])
+        elsif key =~ /acceptable_languages/
+          modified_params.merge!('skills' => val)
+        end
+      end
+    end
+    modified_params
   end
 
   def initial_query_params
