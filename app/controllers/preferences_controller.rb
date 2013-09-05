@@ -2,8 +2,8 @@ class PreferencesController < ApplicationController
   require 'string'
   respond_to :json, :html
   def update
-    pref_params = params[:preference]
-    preference = Preference.find("listing_id: #{preference_params.slice!(:listing_id)}")
+    pref_params = params['preference']
+    preference = Preference.find("user_id: #{preference_params['user_id']}")
     if preference && preference.update_attributes(preference_params)
       render text: "OK", status: 200
     else
@@ -32,6 +32,15 @@ class PreferencesController < ApplicationController
   def create
     preference = Preference.create(preference_params)
     if preference && preference.save
+      render text: "OK", status: 200
+    else
+      render text: "Action Failed", status: 500
+    end
+  end
+
+  def destroy
+    preference = Preference.find("user_id: #{params['user_id']}")
+    if preference && preference.destroy
       render text: "OK", status: 200
     else
       render text: "Action Failed", status: 500
