@@ -18,14 +18,14 @@ class PreferencesController < ApplicationController
       all_preferences.select! do |preference|
         ((preference.locations & array_query_params['locations']).count >= 1) && ((preference.skills & array_query_params['skills']).count >= 1)
       end
-      @user_ids = preferences.map{ |preference| preference.user_id }
+      @user_ids = all_preferences.map{ |preference| preference.user_id }
       if @user_ids.count > 0
         render json: @user_ids
       else
         render text: "Action Failed", status: 500
       end
     else
-      render text: "Action Failed", status: 500
+      render json: []
     end
   end
 
@@ -55,20 +55,13 @@ class PreferencesController < ApplicationController
 
   def initial_query_params
     search_params = {}
-    params.require('preference').permit!.each do |key, val|
-      unless val.blank?
-        search_params.merge!(key => val.to_bool) if val.class.name == "String"
-      end
-    end
-    search_params
+    search_params.merge!(params.require('preference').permit!.select { |key, val| val.class.name != "Array"})
   end
 
   def array_query_params
     search_params = {"locations" => [], "skills" => []}
     params.require('preference').permit!.each do |key, val|
-      if key =~ /locations|skills/
-        val.blank? ? search_params.merge!(key => []) : search_params.merge!(key => val)
-      end
+      search_params.merge!(key => val) if val.class.name == 'Array'
     end
     search_params
   end
