@@ -39,7 +39,7 @@ class PreferencesController < ApplicationController
   end
 
   def destroy
-    preference = Preference.find("user_id: #{params['user_id']}")
+    preference = Preference.find("user_id: #{params['preference']['user_id']}")
     if preference && preference.destroy
       render text: "OK", status: 200
     else

@@ -23,6 +23,11 @@ group :test, :development do
   gem 'pry' #debugging
 end
 
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
 group :doc do
   gem 'sdoc', require: false
 end
