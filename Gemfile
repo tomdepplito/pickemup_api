@@ -14,6 +14,9 @@ gem 'jquery-rails'
 #gem 'unicorn'
 gem "puma", "~> 2.0.0.b7"
 
+#QUEUES
+gem 'sidekiq'
+
 group :production do
   #HEROKU
   gem 'rails_12factor'
