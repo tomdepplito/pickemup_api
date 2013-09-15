@@ -17,6 +17,9 @@ gem "puma", "~> 2.0.0.b7"
 #QUEUES
 gem 'sidekiq'
 
+#OTHER
+gem 'redis'
+
 group :production do
   #HEROKU
   gem 'rails_12factor'
@@ -24,6 +27,7 @@ end
 
 group :test, :development do
   gem 'pry' #debugging
+  gem 'fakeredis', require: 'fakeredis/rspec'
 end
 
 group :test do
