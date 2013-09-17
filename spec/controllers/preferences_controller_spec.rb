@@ -8,7 +8,8 @@ describe PreferencesController do
   before :each do
     request.env["HTTP_ACCEPT"] = 'application/json'
     @params = {'preference' => {'locations' => ['San Francisco'], 'skills' => ['Ruby'],
-                                'user_id' => FactoryGirl.generate(:random_id)}}
+                                'user_id' => FactoryGirl.generate(:random_id),
+                                'preference_id' => FactoryGirl.generate(:random_id)}}
   end
 
   describe '#create' do
