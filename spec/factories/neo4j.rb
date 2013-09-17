@@ -18,5 +18,6 @@ FactoryGirl.define do
     skills []
     fulltime false
     user_id { generate(:random_id) }
+    preference_id { generate(:random_id) }
   end
 end
