@@ -2,7 +2,7 @@ class JobListingsController < ApplicationController
   require 'string'
   respond_to :json, :html
   def update
-    listing = JobListing.find("listing_id: #{params['job_listing']['listing_id']}")
+    listing = JobListing.find("job_listing_id: #{params['job_listing']['job_listing_id']}")
     if listing && listing.update_attributes(create_params)
       render text: "OK", status: 200
     else
@@ -17,7 +17,7 @@ class JobListingsController < ApplicationController
       all_listings.select! do |listing|
         ((listing.locations & array_query_params['locations']).count >= 1) && ((listing.skills & array_query_params['skills']).count >= 1)
       end
-      @listing_ids = all_listings.map{ |listing| listing.listing_id }
+      @listing_ids = all_listings.map{ |listing| listing.job_listing_id }
       if @listing_ids.count > 0
         render json: @listing_ids
       else
@@ -38,7 +38,7 @@ class JobListingsController < ApplicationController
   end
 
   def destroy
-    listing = JobListing.find("listing_id: #{params['job_listing']['listing_id']}")
+    listing = JobListing.find("job_listing_id: #{params['job_listing']['job_listing_id']}")
     if listing && listing.destroy
       render text: "OK", status: 200
     else
