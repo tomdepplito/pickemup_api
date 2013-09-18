@@ -9,4 +9,8 @@ PickemupApi::Application.routes.draw do
   get '/job_listings/retrieve' => 'job_listings#retrieve'
   post '/job_listings/create' => 'job_listings#create'
   post '/job_listings/destroy' => 'job_listings#destroy'
+  #Companies
+  post '/companies/update' => 'companies#update'
+  post '/companies/create' => 'companies#create'
+  post '/companies/destroy' => 'companies#destroy'
 end
