@@ -1,4 +1,6 @@
 class Preference < Neo4j::Rails::Model
+  include PreferenceConstants
+
   property :locations, type: String, default: [] #Serialized Array
   property :skills, type: String, default: [] #Serialized Array
   property :us_citizen, type: :boolean, default: false
@@ -31,6 +33,8 @@ class Preference < Neo4j::Rails::Model
 
   validates_presence_of :preference_id
   validates_uniqueness_of :preference_id
+
+  COMPANY_SIZE_RANGES = {'1-10 Employees' => 1..10, '11-50 Employees' => 11..50, '51-200 Employees' => 51..200, '201-500 Employees' => 201..500, '501+ Employees' => 501..Float::INFINITY}
 
   def user
     User.find("user_id: #{self.user_id}")
