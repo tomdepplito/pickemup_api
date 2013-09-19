@@ -56,7 +56,7 @@ class Algorithm
   end
 
   def valid_vacation_days?
-    self.preference.vacation_days? ? self.job_listing.vacation_days > 0 : true
+    self.preference.vacation_days ? self.job_listing.vacation_days > 0 : true
   end
 
   def valid_perks?
