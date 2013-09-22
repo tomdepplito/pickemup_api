@@ -26,12 +26,12 @@ end
 
 group :test, :development do
   gem 'pry' #debugging
-  gem 'fakeredis', require: 'fakeredis/rspec'
 end
 
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'fakeredis', require: 'fakeredis/rspec'
 end
 
 group :doc do
