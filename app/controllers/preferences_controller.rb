@@ -47,6 +47,14 @@ class PreferencesController < ApplicationController
     end
   end
 
+  def update_scores
+    if UpdateRelevantListingMatchesWorker.perform_async(params['preference']['preference_id'])
+      render text: "OK", status: 200
+    else
+      render text: "Action Failed", status: 500
+    end
+  end
+
   private
 
   def preference_params
