@@ -26,4 +26,6 @@ PickemupApi::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  ENV["REDISTOGO_URL"] = "redis://redistogo:106f7e7d52701905fab5cc2b9b8b18c0@beardfish.redistogo.com:10252/"
 end
