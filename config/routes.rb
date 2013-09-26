@@ -15,4 +15,6 @@ PickemupApi::Application.routes.draw do
   post '/companies/update' => 'companies#update'
   post '/companies/create' => 'companies#create'
   post '/companies/destroy' => 'companies#destroy'
+  require 'sidekiq/web'
+  mount Sidekiq::Web, at: '/sidekiq'
 end
