@@ -69,4 +69,14 @@ describe PreferencesController do
       end
     end
   end
+
+  describe '#update_scores' do
+    context 'when a preference changes' do
+      it 'should update the scores for all relevant job listings' do
+        @params = {'preference' => {'preference_id' => 'some_job_listing_id'}}
+        UpdateRelevantListingMatchesWorker.should_receive(:perform_async).with(@params['preference']['preference_id'])
+        post :update_scores, @params
+      end
+    end
+  end
 end
