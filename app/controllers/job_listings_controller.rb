@@ -46,6 +46,14 @@ class JobListingsController < ApplicationController
     end
   end
 
+  def update_scores
+    if UpdateRelevantPreferenceMatchesWorker.perform_async(params['job_listing']['job_listing_id'])
+      render text: "OK", status: 200
+    else
+      render text: "Action Failed", status: 500
+    end
+  end
+
   private
 
   def create_params
