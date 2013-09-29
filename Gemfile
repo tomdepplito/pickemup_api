@@ -7,6 +7,11 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jbuilder', '~> 1.2'
 
+#TORQUEBOX
+gem "torquebox", "~> 3.0.0"
+gem 'torquebox-server', '~> 3.0.0'
+gem 'torquebox-messaging', '~> 3.0.0'
+
 #JAVASCRIPT
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
