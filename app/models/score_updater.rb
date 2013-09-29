@@ -1,5 +1,6 @@
 class ScoreUpdater
   def self.update_all_scores
+    binding.pry
     listings = JobListing.all.query(:live? => true)
     preferences = Preference.all
     listings.each do |job_listing|

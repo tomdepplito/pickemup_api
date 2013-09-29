@@ -49,4 +49,7 @@ platform :jruby do
   gem 'activerecord-jdbcsqlite3-adapter', '1.3.0.beta1'
   gem 'neo4j', git: 'https://github.com/andreasronge/neo4j.git', branch: 'rails4'
   gem 'neo4j-admin'
+  gem "neo4j-enterprise", "~> 1.9.2"
+  gem "neo4j-community", "~> 1.9.2"
+  gem "neo4j-advanced", "~> 1.9.2"
 end

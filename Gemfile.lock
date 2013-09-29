@@ -88,11 +88,13 @@ GEM
     minitest (4.7.5)
     multi_json (1.7.9)
     neo4j-admin (0.1.0-java)
+    neo4j-advanced (1.9.2-java)
     neo4j-community (1.9.2-java)
     neo4j-core (2.3.0-java)
       neo4j-community (>= 1.9.M05, < 2.0)
       neo4j-cypher (~> 1.0.0)
     neo4j-cypher (1.0.0)
+    neo4j-enterprise (1.9.2-java)
     neo4j-wrapper (2.3.0-java)
       neo4j-core (= 2.3.0)
     orm_adapter (0.4.0)
@@ -209,6 +211,9 @@ DEPENDENCIES
   jquery-rails
   neo4j!
   neo4j-admin
+  neo4j-advanced (~> 1.9.2)
+  neo4j-community (~> 1.9.2)
+  neo4j-enterprise (~> 1.9.2)
   pg
   pg-hstore
   pry

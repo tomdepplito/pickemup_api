@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'neo4j/rails/ha_console/railtie' if Rails.env.development?
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
