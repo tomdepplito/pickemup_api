@@ -1,9 +1,11 @@
+require 'torquebox-messaging'
 class JobListingsController < ApplicationController
   require 'string'
   respond_to :json, :html
   def update
     listing = JobListing.find("job_listing_id: #{params['job_listing']['job_listing_id']}")
     if listing && listing.update_attributes(create_params)
+      UpdatePreferenceMatches.new.start(params['job_listing']['job_listing_id'])
       render text: "OK", status: 200
     else
       render text: "Action Failed", status: 500
@@ -31,6 +33,7 @@ class JobListingsController < ApplicationController
   def create
     listing = JobListing.create(create_params)
     if listing && listing.save
+      UpdatePreferenceMatches.new.start(params['job_listing']['job_listing_id'])
       render text: "OK", status: 200
     else
       render text: "Action Failed", status: 500
@@ -47,7 +50,7 @@ class JobListingsController < ApplicationController
   end
 
   def update_scores
-    if UpdateRelevantPreferenceMatchesWorker.perform_async(params['job_listing']['job_listing_id'])
+    if UpdateAllScores.new.start
       render text: "OK", status: 200
     else
       render text: "Action Failed", status: 500
