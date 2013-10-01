@@ -1,0 +1,1 @@
+web: torquebox deploy . --env=production && torquebox run --max-threads=15 -b 0.0.0.0 -p $PORT -J "\-Djboss.server.config.dir=$PWD \-Dorg.torquebox.web.force_http_connector_start=true \-Dorg.apache.tomcat.util.LOW_MEMORY=true"
