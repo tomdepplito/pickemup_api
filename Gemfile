@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 ruby '1.9.3', :engine => 'jruby', :engine_version => '1.7.1'
+gem 'jruby-openssl'
 
 #RAILS STUFF
 gem 'rails', '4.0.0.rc1'
@@ -52,7 +53,9 @@ end
 
 platform :jruby do
   gem 'therubyrhino'
-  gem 'activerecord-jdbcsqlite3-adapter', '1.3.0.beta1'
+  gem 'activerecord-jdbcsqlite3-adapter', :group => :development
+  gem 'activerecord-jdbcpostgresql-adapter', :group => :production
+  #gem 'activerecord-jdbcsqlite3-adapter', '1.3.0.beta1'
   gem 'neo4j', git: 'https://github.com/andreasronge/neo4j.git', branch: 'rails4'
   gem 'neo4j-admin'
 end
