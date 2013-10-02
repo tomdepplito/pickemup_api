@@ -31,10 +31,16 @@ class JobListingsController < ApplicationController
   end
 
   def create
+    #listing = JobListing.create(create_params)
+    #if listing && listing.save
+    #  #UpdatePreferenceMatches.new.start(params['job_listing']['job_listing_id'])
+    #  render text: "OK", status: 200
+    #else
+    #  render text: "Action Failed", status: 500
+    #end
     listing = JobListing.create(create_params)
-    if listing && listing.save
-      #UpdatePreferenceMatches.new.start(params['job_listing']['job_listing_id'])
-      render text: "OK", status: 200
+    if listing
+      render text: "#{listing.save}", status: 200
     else
       render text: "Action Failed", status: 500
     end
