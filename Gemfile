@@ -15,7 +15,7 @@ gem 'jquery-rails'
 gem "puma", "~> 2.0.0.b7"
 
 #QUEUES
-gem "resque", "~> 1.25.1"
+gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
 
 #OTHER
 gem 'redis'
