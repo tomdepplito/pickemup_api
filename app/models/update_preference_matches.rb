@@ -1,3 +1,4 @@
+include TorqueBox
 require 'torquebox-messaging'
 class UpdatePreferenceMatches
   include Scoring
