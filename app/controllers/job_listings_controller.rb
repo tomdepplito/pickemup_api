@@ -39,6 +39,8 @@ class JobListingsController < ApplicationController
     #  render text: "Action Failed", status: 500
     #end
     listing = JobListing.create(create_params)
+    puts listing
+    puts listing.save!
     if listing
       render text: "#{listing.save}", status: 200
     else
