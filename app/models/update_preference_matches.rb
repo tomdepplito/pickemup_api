@@ -2,7 +2,8 @@ require 'torquebox-messaging'
 class UpdatePreferenceMatches
   include Scoring
   def initialize
-    @queue = TorqueBox.fetch('/queues/update_preference_matches')
+    #@queue = TorqueBox.fetch('/queues/update_preference_matches')
+    @queue = TorqueBox::Messaging::Queue.start("/queues/update_preferences_matches", :durable => false)
   end
 
   def start(job_listing_id)
