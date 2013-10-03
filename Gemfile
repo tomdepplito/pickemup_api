@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 ruby '1.9.3', :engine => 'jruby', :engine_version => '1.7.1'
-gem 'jruby-openssl'
 
 #RAILS STUFF
 gem 'rails', '4.0.0.rc1'
@@ -8,21 +7,15 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jbuilder', '~> 1.2'
 
-#TORQUEBOX
-gem "torquebox", "~> 3.0.0.beta1"
-#gem 'torquebox-server', '~> 3.0.0'
-gem 'torquebox-messaging', '~> 3.0.0.beta1'
-gem 'torquebox-server', '3.0.0.beta1'
-
 #JAVASCRIPT
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 
 #WEB SERVERS
-#gem "puma", "~> 2.0.0.b7"
+gem "puma", "~> 2.0.0.b7"
 
 #QUEUES
-gem 'sidekiq'
+gem "resque", "~> 1.25.1"
 
 #OTHER
 gem 'redis'
