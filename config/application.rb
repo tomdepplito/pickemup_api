@@ -12,6 +12,7 @@ module PickemupApi
   if defined? TorqueBox::Infinispan::Cache
     config.cache_store = :torquebox_store
   end
+  config.neo4j.storage_path = "#{config.root}/db/neo4j-#{Rails.env}"
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
