@@ -1,5 +1,4 @@
 require File.expand_path('../boot', __FILE__)
-
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
@@ -8,8 +7,9 @@ Bundler.require(:default, Rails.env)
 
 module PickemupApi
   class Application < Rails::Application
+  require 'neo4j/rails/ha_console/railtie' if Rails.env.development?
       # Use TorqueBox::Infinispan::Cache for the Rails cache store
-  config.neo4j.storage_path = "#{config.root}/db/neo4j-#{Rails.env}"
+  config.neo4j.storage_path = "#{config.root}/db/neo4j-#{Rails.env}" unless Rails.env.development?
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

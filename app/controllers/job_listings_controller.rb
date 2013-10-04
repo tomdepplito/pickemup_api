@@ -36,8 +36,6 @@ class JobListingsController < ApplicationController
       binding.pry
       listing.save
       #UpdatePreferenceMatches.new(params['job_listing']['job_listing_id'])
-      resque = Resque.new
-      resque << UpdateAllScores.new
       render text: "OK", status: 200
     else
       render text: "Action Failed", status: 500
