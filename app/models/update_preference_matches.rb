@@ -4,9 +4,7 @@ class UpdatePreferenceMatches
   include Scoring
   def initialize
     #@queue = TorqueBox.fetch('/queues/update_preference_matches')
-    puts "About to create queue"
     #@queue = TorqueBox::Messaging::Queue.start("/queues/update_preferences_matches", :durable => false)
-    puts "queue: #{@queue}"
   end
 
   def start(job_listing_id)
@@ -14,7 +12,7 @@ class UpdatePreferenceMatches
     #puts "queue publish: #{@queue}"
     #if @queue.receive(:timeout => 5_000)
     Thread.new do
-      puts "queue receive: #{@queue}"
+      puts "Start Thread"
       job_listing = JobListing.find("job_listing_id: #{job_listing_id}")
       puts "job listing: #{job_listing}"
       if job_listing
