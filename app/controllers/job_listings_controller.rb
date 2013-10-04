@@ -3,8 +3,11 @@ class JobListingsController < ApplicationController
   require 'string'
   respond_to :json, :html
   def update
+    puts "Hitting update"
     listing = JobListing.find("job_listing_id: #{params['job_listing']['job_listing_id']}")
-    if listing && listing.update_attributes(create_params)
+    puts "Listing: #{listing}"
+    if listing #&& listing.update_attributes(create_params)
+      puts "Calling update preferences"
       UpdatePreferenceMatches.new.start(params['job_listing']['job_listing_id'])
       render text: "OK", status: 200
     else
