@@ -31,6 +31,7 @@ class UpdatePreferenceMatches
           end
         end
       end
+      puts "Redis keys: #{$scores.keys}"
       true
     end
   end
