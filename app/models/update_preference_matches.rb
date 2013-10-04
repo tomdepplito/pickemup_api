@@ -5,12 +5,14 @@ class UpdatePreferenceMatches
   def initialize
     #@queue = TorqueBox.fetch('/queues/update_preference_matches')
     #@queue = TorqueBox::Messaging::Queue.start("/queues/update_preferences_matches", :durable => false)
+    puts "New update preference"
   end
 
   def start(job_listing_id)
     #@queue.publish(job_listing_id)
     #puts "queue publish: #{@queue}"
     #if @queue.receive(:timeout => 5_000)
+    puts "Just before Thread"
     Thread.new do
       puts "Start Thread"
       job_listing = JobListing.find("job_listing_id: #{job_listing_id}")
