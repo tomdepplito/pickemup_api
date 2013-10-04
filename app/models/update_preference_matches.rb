@@ -22,6 +22,8 @@ class UpdatePreferenceMatches
         #preferences = Preference.all.query(query)
         preferences = Preference.all
         puts "preference count: #{preferences.count}"
+        set_score
+        puts "Is this working(update class)? #{$score.get('testing')}"
         if preferences.count > 0
           all_preferences = preferences.to_a
           all_preferences.each do |preference|
