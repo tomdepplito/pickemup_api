@@ -48,7 +48,6 @@ class PreferencesController < ApplicationController
   end
 
   def update_scores
-    if UpdateRelevantListingMatchesWorker.perform_async(params['preference']['preference_id'])
       render text: "OK", status: 200
     else
       render text: "Action Failed", status: 500

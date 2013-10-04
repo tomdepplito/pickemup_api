@@ -1,4 +1,5 @@
 class JobListingsController < ApplicationController
+  include Resque
   require 'string'
   respond_to :json, :html
   def update
@@ -31,12 +32,12 @@ class JobListingsController < ApplicationController
 
   def create
     listing = JobListing.create(create_params)
-    puts "Listing: #{listing}"
-    puts "Result of save: #{listing.save!}"
-    puts "Count: #{JobListing.count}"
-    if listing && listing.save
+    if listing
+      binding.pry
+      listing.save
       #UpdatePreferenceMatches.new(params['job_listing']['job_listing_id'])
-      puts "Redis keys: #{$scores.keys}"
+      resque = Resque.new
+      resque << UpdateAllScores.new
       render text: "OK", status: 200
     else
       render text: "Action Failed", status: 500
