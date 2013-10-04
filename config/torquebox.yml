@@ -4,3 +4,10 @@
 # for all configuration options.
 web:
   context: "/"
+queues:
+  /queues/update_all_scores:
+    durable: false
+  /queues/update_listing_matches:
+    durable: false
+  /queues/update_preference_matches:
+    durable: false
