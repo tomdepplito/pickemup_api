@@ -12,7 +12,7 @@ class UpdatePreferenceMatches
     #@queue.publish(job_listing_id)
     #puts "queue publish: #{@queue}"
     #if @queue.receive(:timeout => 5_000)
-    puts "Just before Thread"
+    puts "Just before update preference Thread"
     Thread.new do
       puts "Start Thread"
       job_listing = JobListing.find("job_listing_id: #{job_listing_id}")
