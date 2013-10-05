@@ -26,9 +26,10 @@ class UpdatePreferenceMatches
           puts "Hey! This is still working!"
           all_preferences = preferences.to_a
           all_preferences.each do |preference|
-            if ((preference.locations & job_listing.locations).count >= 1) && ((preference.skills & preference.skills).count >= 1)
-              set_score(job_listing, preference)
-            end
+        #    if ((preference.locations & job_listing.locations).count >= 1) && ((preference.skills & preference.skills).count >= 1)
+              puts "Setting Score: #{set_score(job_listing, preference)}"
+              puts "Score: #{$scores.get("score.#{job_listing.job_listing_id}.#{preference.preference_id}")}"
+           # end
           end
         end
       end
