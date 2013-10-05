@@ -6,10 +6,11 @@ class JobListingsController < ApplicationController
     puts "Hitting update"
     listing = JobListing.find("job_listing_id: #{params['job_listing']['job_listing_id']}")
     puts "Listing: #{listing}"
-    if listing #&& listing.update_attributes(create_params)
+    if listing && listing.update_attributes(create_params)
       puts "Calling update preferences"
+      puts "Count of preferences: #{Preference.count}"
+      puts "Count of job listings; #{JobListing.count}"
       UpdatePreferenceMatches.new.start(params['job_listing']['job_listing_id'])
-      puts "Is this working? #{$scores.get('testing')}"
       render text: "OK", status: 200
     else
       render text: "Action Failed", status: 500
