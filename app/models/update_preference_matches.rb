@@ -19,12 +19,11 @@ class UpdatePreferenceMatches
       puts "job listing: #{job_listing}"
       if job_listing
         query = {:us_citizen => job_listing.us_citizen, :remote => job_listing.remote, :fulltime => job_listing.fulltime}
-        #preferences = Preference.all.query(query)
-        preferences = Preference.all
-        puts "preference count: #{preferences.count}"
-        set_score
-        puts "Is this working(update class)? #{$scores.get('testing')}"
+        puts "Just before preference query - THIS MIGHT BREAK"
+        preferences = Preference.all.query(query)
+        #preferences = Preference.all
         if preferences.count > 0
+          puts "Hey! This is still working!"
           all_preferences = preferences.to_a
           all_preferences.each do |preference|
             if ((preference.locations & job_listing.locations).count >= 1) && ((preference.skills & preference.skills).count >= 1)
