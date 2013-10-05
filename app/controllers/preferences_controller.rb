@@ -5,6 +5,7 @@ class PreferencesController < ApplicationController
     pref_params = params['preference']
     preference = Preference.find("user_id: #{preference_params['user_id']}")
     if preference && preference.update_attributes(preference_params)
+      UpdateListingMatches.new.start(params['preference']['preference_id'])
       render text: "OK", status: 200
     else
       render text: "Action Failed", status: 500
@@ -32,6 +33,7 @@ class PreferencesController < ApplicationController
   def create
     preference = Preference.create(preference_params)
     if preference && preference.save
+      UpdateListingMatches.new.start(params['preference']['preference_id'])
       render text: "OK", status: 200
     else
       render text: "Action Failed", status: 500
