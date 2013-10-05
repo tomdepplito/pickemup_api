@@ -2,12 +2,10 @@ require 'torquebox-messaging'
 class UpdateListingMatches
   include Scoring
   def initialize
-    @queue = TorqueBox.fetch('/queues/update_listing_matches')
   end
 
   def start(preference_id)
-    @queue.publish(preference_id)
-    if @queue.receive(:timeout => 5_000)
+    Thread.new do
       preference = Preference.find("preference_id: #{preference_id}")
       if preference
         query = {:live? => true, :us_citizen => preference.us_citizen, :remote => preference.remote, :fulltime => preference.fulltime}
