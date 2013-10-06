@@ -15,4 +15,6 @@ PickemupApi::Application.routes.draw do
   post '/companies/update' => 'companies#update'
   post '/companies/create' => 'companies#create'
   post '/companies/destroy' => 'companies#destroy'
+  #General Scoring
+  get '/scores/update_all_scores' => 'scores#update_all_scores'
 end

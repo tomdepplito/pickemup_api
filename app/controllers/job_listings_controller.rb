@@ -59,7 +59,7 @@ class JobListingsController < ApplicationController
   end
 
   def update_scores
-    if UpdateAllScores.new.start
+    if UpdatePreferenceMatches.new.start(params['job_listing']['job_listing_id'])
       render text: "OK", status: 200
     else
       render text: "Action Failed", status: 500
