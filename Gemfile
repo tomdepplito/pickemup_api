@@ -17,6 +17,9 @@ gem 'jbuilder', '~> 1.2'
 gem "torquebox", "~> 3.0.0"
 gem 'torquebox-server', '~> 3.0.0'
 gem 'torquebox-messaging', '~> 3.0.0'
+gem "torquebox-rake-support"
+gem 'torquebox-capistrano-support', :group => :development
+gem 'capistrano'
 
 #JAVASCRIPT
 gem 'coffee-rails', '~> 4.0.0'
@@ -59,4 +62,5 @@ platform :jruby do
   #gem 'activerecord-jdbcsqlite3-adapter', '1.3.0.beta1'
   gem 'neo4j', git: 'https://github.com/andreasronge/neo4j.git', branch: 'rails4'
   gem 'neo4j-admin'
+  gem 'neo4j-advanced'
 end
