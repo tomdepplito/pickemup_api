@@ -18,7 +18,7 @@ gem "torquebox", "~> 3.0.0"
 gem 'torquebox-server', '~> 3.0.0'
 gem 'torquebox-messaging', '~> 3.0.0'
 gem "torquebox-rake-support"
-gem 'torquebox-capistrano-support', :group => :development
+gem 'torquebox-capistrano-support'
 gem 'capistrano'
 
 #JAVASCRIPT
