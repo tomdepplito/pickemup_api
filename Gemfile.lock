@@ -11,7 +11,7 @@ GIT
       railties (~> 4.0.0.beta, >= 3.0.0, < 5)
 
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     actionmailer (4.0.0.rc1)
       actionpack (= 4.0.0.rc1)
@@ -76,7 +76,6 @@ GEM
       railties (>= 3.0.0)
     fakeredis (0.4.2)
       redis (~> 3.0.0)
-    ffi (1.9.0)
     ffi (1.9.0-java)
     highline (1.6.19)
     hike (1.2.3)
