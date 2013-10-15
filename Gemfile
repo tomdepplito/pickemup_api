@@ -26,7 +26,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 
 #WEB SERVERS
-#gem "puma", "~> 2.0.0.b7"
+gem "puma", "~> 2.0.0.b7"
 
 #OTHER
 gem 'redis'
