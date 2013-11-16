@@ -1,28 +1,26 @@
-== README
+Fork the API located at: https://github.com/tomdepplito/pickemup_api
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Make sure you have JRuby installed by running:
+rvm install jruby-1.7.1
+rvm use jruby 1.7.1
 
-Things you may want to cover:
+Make sure you have the right version of Rails by running:
+gem install rails -v '4.0.0.rc1'
 
-* Ruby version
+Download Torquebox version 3.0.0 here: http://torquebox.org/download/
 
-* System dependencies
+Run the following:
+export TORQUEBOX_HOME=~/torquebox-3.0.0
+export JBOSS_HOME=$TORQUEBOX_HOME/jboss
+export JRUBY_HOME=$TORQUEBOX_HOME/jruby
+export PATH=$JRUBY_HOME/bin:$PATH
 
-* Configuration
+Almost done.  Run:
+bundle
 
-* Database creation
+Now to start the whole environment.  Run:
+torquebox deploy
+torquebox run
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+*Torquebox is what we use in production but you could also start a server on any port you want by running:
+bundle exec puma
