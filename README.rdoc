@@ -1,10 +1,8 @@
 Fork the API located at: https://github.com/tomdepplito/pickemup_api
 
 Make sure you have JRuby installed by running:
-`
-rvm install jruby-1.7.1
-rvm use jruby 1.7.1
-`
+```rvm install jruby-1.7.1
+rvm use jruby 1.7.1```
 
 Make sure you have the right version of Rails by running:
 gem install rails -v '4.0.0.rc1'
