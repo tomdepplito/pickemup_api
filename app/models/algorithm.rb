@@ -74,7 +74,7 @@ class Algorithm
   end
 
   def valid_location?
-    self.preference.willing_to_relocate or self.preference.locations.blank? or self.preference.locations.include?(self.job_listing.location)
+    self.preference.willing_to_relocate or self.preference.locations.blank? or (self.preference.locations & self.job_listing.locations).length > 0
   end
 
   def company_preferred_count
